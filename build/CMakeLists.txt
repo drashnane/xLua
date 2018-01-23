@@ -5,6 +5,32 @@
 # Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 cmake_minimum_required(VERSION 2.8)
+#begin pbc
+set (PBC_SRC 
+        pbc/binding/lua53/pbc-lua53.c 
+        pbc/src/alloc.c 
+        pbc/src/array.c 
+        pbc/src/bootstrap.c 
+        pbc/src/context.c 
+        pbc/src/decode.c 
+        pbc/src/map.c 
+        pbc/src/pattern.c 
+        pbc/src/proto.c 
+        pbc/src/register.c 
+        pbc/src/rmessage.c 
+        pbc/src/stringpool.c 
+        pbc/src/varint.c 
+        pbc/src/wmessage.c
+)
+ 
+set_property(
+        SOURCE ${PBC_SRC}
+        APPEND
+        PROPERTY COMPILE_DEFINITIONS
+        LUA_LIB
+)
+list(APPEND THIRDPART_INC pbc)
+set (THIRDPART_SRC  ${THIRDPART_SRC} ${PBC_SRC})
 
 if ( WIN32 AND NOT CYGWIN AND NOT ( CMAKE_SYSTEM_NAME STREQUAL "WindowsStore" ) AND NOT ANDROID)
 	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /MT" CACHE STRING "")
