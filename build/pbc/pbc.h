@@ -20,9 +20,6 @@
 #define PBC_UINT 11
 #define PBC_UNKNOWN 12
 #define PBC_REPEATED 128
-#define bool int
-#define false 0
-#define true 1
 #ifdef __cplusplus
 extern "C" {
 #endif
